@@ -38,8 +38,8 @@ public class Card {
         };
 
         if (this.balance >= cost) {
-            JOptionPane.showMessageDialog(null, "You can passed through the turnstile.");
             this.balance -= cost;
+            JOptionPane.showMessageDialog(null, "You can passed through the turnstile.\nNew balance: " + this.balance);
         }
         else
             JOptionPane.showMessageDialog(null, "Insuficient balance");

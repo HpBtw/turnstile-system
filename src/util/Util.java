@@ -5,7 +5,6 @@ import domain.User;
 import security.Security;
 
 import javax.swing.*;
-
 import java.util.Random;
 
 import static java.lang.Double.parseDouble;
@@ -132,7 +131,7 @@ public class Util {
             recharge(pointer);
         }
         if (charge < 0) {
-            showMessageDialog(null, "You can't add an negative value");
+            showMessageDialog(null, "You can't add a negative value");
             recharge(pointer);
         }
         if (charge == 0)
@@ -223,21 +222,24 @@ public class Util {
         if (pointer == -1)
             showMessageDialog(null, "No CardID found");
         else {
-            String aux = "Card user: " + card[index].user.name + "\n";
+            String aux = "Card user: " + card[pointer].user.name + "\n";
             aux += "Are you sure you want to delete this card?";
 
             int ans = showConfirmDialog(null, aux);
             if (ans == 0) {
-                card[pointer] = card[index-1];
-                index--;
-                showMessageDialog(null, "Card successful deleted");
+                finishDel(pointer);
             } else if (ans == 1) {
                 delCard();
             } else {
                 menuAdm();
             }
         }
+    }
 
+    private void finishDel(int pointer) {
+        card[pointer] = card[index-1];
+        index--;
+        showMessageDialog(null, "Card successful deleted");
     }
 
     private int search(long id) {
@@ -260,7 +262,6 @@ public class Util {
                 break;
             }
         }
-
         return equals;
     }
 
